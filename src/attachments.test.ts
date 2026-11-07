@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { imageFilesFrom } from './attachments';
-import { canSend, createComposerStore, readyAttachmentIds } from './composer';
-import { mentionDirectory } from './mentions';
+import { imageFilesFrom } from './attachments.js';
+import { canSend, createComposerStore, readyAttachmentIds } from './composer.js';
+import { mentionDirectory } from './mentions.js';
 
 const file = (name: string, type: string) => ({ name, type });
 

@@ -11,7 +11,7 @@ import {
   mentionsTarget,
   rankMentionCandidates,
   segmentText,
-} from './mentions';
+} from './mentions.js';
 
 const member = (id: string, displayName: string): MentionCandidate => ({ target: { kind: 'member', id }, displayName });
 const agent = (handle: string, displayName: string): MentionCandidate => ({ target: { kind: 'agent', handle }, displayName, handle });

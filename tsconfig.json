@@ -1,11 +1,28 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // DOM for the Web Crypto and TextEncoder types only (both are globals in Node 24, Bun,
+    "target": "ES2023",
+    // DOM for the Web Crypto and TextEncoder types only (both are globals in Node 20+, Bun,
     // browsers, Workers and React Native): nothing here may touch `document` or `window`
     // (src/boundary.test.ts). Node's types are for the tests, which read this package's files.
     "lib": ["ES2023", "DOM"],
-    "types": ["node"]
+    "types": ["node"],
+    // NodeNext, so the emitted `dist` loads in plain Node as well as in any bundler: every
+    // relative import names its `.js` file.
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "include": ["src", "vitest.config.ts"]
+  "include": ["src", "scripts", "vitest.config.ts"]
 }

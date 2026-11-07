@@ -1,0 +1,3 @@
+node_modules/
+coverage/
+# dist/ is committed on purpose: a tagged commit installs from GitHub with no build step.

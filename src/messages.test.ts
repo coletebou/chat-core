@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { type MessagePage, type ThreadedMessage, appendOlder, groupRuns, newestFirst, oldestHeld, refreshNewest, removeMessage, threadOf, upsertMessage } from './messages';
+import { type MessagePage, type ThreadedMessage, appendOlder, groupRuns, newestFirst, oldestHeld, refreshNewest, removeMessage, threadOf, upsertMessage } from './messages.js';
 
 interface Msg extends ThreadedMessage {
   readonly author: string;

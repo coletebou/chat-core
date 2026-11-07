@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { collapseSpaces, foldForSearch, nameKey, snippet } from './text';
+import { collapseSpaces, foldForSearch, nameKey, snippet } from './text.js';
 
 describe('nameKey', () => {
   it('folds case, accents and punctuation to one key', () => {

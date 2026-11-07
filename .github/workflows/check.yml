@@ -1,0 +1,43 @@
+name: check
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Vitest needs 22.12 or later; Node 20 runs the built package below.
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      # dist/ is committed so a tag installs from GitHub with no build: it must be what the
+      # source builds to, file for file.
+      - run: pnpm check:dist
+      - run: pnpm smoke
+
+  # The built package on the oldest Node it claims (engines), with nothing installed: it has no
+  # runtime dependencies, so the checkout alone must run.
+  dist-on-node-20:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/smoke.mjs

@@ -9,9 +9,9 @@ import {
   mentionTokenFor,
   rankMentionCandidates,
   sameTarget,
-} from './mentions';
-import { type ComposerAttachment } from './attachments';
-import { type Store, createStore } from './store';
+} from './mentions.js';
+import { type ComposerAttachment } from './attachments.js';
+import { type Store, createStore } from './store.js';
 
 /**
  * The composer's state, kept outside any UI framework: what is typed, where the caret is, which

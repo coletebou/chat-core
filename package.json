@@ -1,18 +1,47 @@
 {
-  "name": "@bookclub/chat-core",
+  "name": "@coletebou/chat-core",
   "version": "0.1.0",
-  "private": true,
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
+  "author": "Cole Tebou <coletebou@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coletebou/chat-core.git"
+  },
   "type": "module",
   "sideEffects": false,
   "description": "Framework-agnostic chat core: messages and threads, @-mentions and their autocomplete, attachments, agent participants and their signed webhooks, and a client store. No runtime dependencies.",
-  "exports": {
-    ".": "./src/index.ts",
-    "./agents": "./src/agents.ts"
+  "packageManager": "pnpm@11.18.0",
+  "engines": {
+    "node": ">=20"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./agents": {
+      "types": "./dist/agents.d.ts",
+      "import": "./dist/agents.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
+    "build": "node scripts/build.mjs",
+    "check:dist": "node scripts/build.mjs && git diff --exit-code -- dist && test -z \"$(git status --porcelain -- dist)\"",
+    "smoke": "node scripts/smoke.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@vitest/coverage-v8": "5.0.5",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
   }
 }

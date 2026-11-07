@@ -1,0 +1,15 @@
+{
+  // What `pnpm build` emits to dist/: the library alone, with its declarations; no tests.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "types": [],
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts", "src/test"]
+}

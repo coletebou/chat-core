@@ -1,4 +1,4 @@
-import { collapseSpaces, foldForSearch, nameKey } from './text';
+import { collapseSpaces, foldForSearch, nameKey } from './text.js';
 
 /**
  * @-mentions, parsed from plain text. A message is stored exactly as it was typed (`@Ana`,

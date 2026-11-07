@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createComposerStore } from './composer';
-import { type MentionCandidate, mentionDirectory, mentionable } from './mentions';
-import { createStore } from './store';
+import { createComposerStore } from './composer.js';
+import { type MentionCandidate, mentionDirectory, mentionable } from './mentions.js';
+import { createStore } from './store.js';
 
 const member = (id: string, displayName: string): MentionCandidate => ({ target: { kind: 'member', id }, displayName });
 const people = [member('ana', 'Ana'), member('ben', 'Ben Carter'), member('gs', 'Grant Smith'), member('gl', 'Grant Lee'), { target: { kind: 'agent', handle: 'cal' }, displayName: 'Cal', handle: 'cal' } as const];

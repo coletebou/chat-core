@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { AGENT_HEADERS, AGENT_SIGNATURE_TOLERANCE_S, agentWebhookHeaders, bearerToken, constantTimeEqual, signAgentWebhook, verifyAgentWebhook } from './agents';
+import { AGENT_HEADERS, AGENT_SIGNATURE_TOLERANCE_S, agentWebhookHeaders, bearerToken, constantTimeEqual, signAgentWebhook, verifyAgentWebhook } from './agents.js';
 
 /**
  * The agent protocol's signing (D205), against golden vectors whose signatures were made with
@@ -14,7 +14,7 @@ interface Vector {
   readonly body: string;
   readonly signature: string;
 }
-const { vectors } = JSON.parse(readFileSync(new URL('../../../fixtures/agents/webhook-v1.json', import.meta.url), 'utf8')) as { vectors: Vector[] };
+const { vectors } = JSON.parse(readFileSync(new URL('../fixtures/agents/webhook-v1.json', import.meta.url), 'utf8')) as { vectors: Vector[] };
 const at = (v: Vector) => v.timestamp * 1000;
 
 describe('agent webhook signatures (D205)', () => {
