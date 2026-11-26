@@ -53,7 +53,7 @@ needs on top of it. `CLAUDE.md` only imports this file — edit this one.
 pnpm install --frozen-lockfile
 pnpm test                 # vitest run, offline, all of src/**/*.test.ts
 pnpm test -- src/mentions.test.ts    # one file
-pnpm typecheck             # tsc -p tsconfig.json
+pnpm typecheck             # tsrs -p tsconfig.json
 pnpm build && pnpm check:dist   # rebuild dist/ from scratch and diff it against what's committed
 pnpm smoke                  # the built package through its own exports, in plain Node
 ```
@@ -74,4 +74,7 @@ pnpm smoke                  # the built package through its own exports, in plai
 - Forgetting `pnpm build` after editing `src/` is the single most common CI failure here
   (`check:dist`) — it's a silent diff, not a type error, so it won't show up until CI runs.
 - `scripts/build.mjs` deletes `dist/` before rebuilding, so a stale file from a module you removed
-  won't linger — don't rely on incremental `tsc` output surviving a rename.
+  won't linger — don't rely on incremental compiler output surviving a rename.
+- Type checking and the `dist/` build both use `tsrs` (a Rust port of the TypeScript 7.1 compiler),
+  pinned to an exact beta version. A tsrs bump can change emitted declarations or source maps, so
+  rebuild and commit `dist/` in the same change. The `typescript` package is only there for editors.

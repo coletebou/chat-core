@@ -20,10 +20,10 @@
  * header) could otherwise name any host, and the agent would hand that host its token.
  */
 export declare const AGENT_HEADERS: {
-    readonly event: "x-agent-event";
-    readonly delivery: "x-agent-delivery";
-    readonly timestamp: "x-agent-timestamp";
-    readonly signature: "x-agent-signature";
+    readonly event: 'x-agent-event';
+    readonly delivery: 'x-agent-delivery';
+    readonly timestamp: 'x-agent-timestamp';
+    readonly signature: 'x-agent-signature';
 };
 /** How far a delivery's timestamp may be from the receiver's clock, either way. */
 export declare const AGENT_SIGNATURE_TOLERANCE_S = 300;

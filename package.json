@@ -34,13 +34,14 @@
     "build": "node scripts/build.mjs",
     "check:dist": "node scripts/build.mjs && git diff --exit-code -- dist && test -z \"$(git status --porcelain -- dist)\"",
     "smoke": "node scripts/smoke.mjs",
-    "typecheck": "tsc -p tsconfig.json",
+    "typecheck": "tsrs -p tsconfig.json",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
     "@vitest/coverage-v8": "5.0.5",
+    "tsrs": "7.1.0-beta.tsrs5",
     "typescript": "6.0.3",
     "vitest": "5.0.5"
   }
